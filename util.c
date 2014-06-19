@@ -65,7 +65,7 @@ init_log(void)
 static void
 log_prefix(bool log_updated_time)
 {
-#ifdef HAVE_GETTIMEOFDAY
+#if 0
 	char timestamp[100];
 	struct timeval tv;
 	struct tm *tm;
@@ -84,7 +84,8 @@ log_prefix(bool log_updated_time)
 	}
 	fputs(prefix, logfile);
 #else
-	fprintf(logfile, "[%-5d] ", (int)getpid());
+         
+	fprintf(logfile, "[%d,%-5d] ", (int)log_updated_time, (int)getpid());
 #endif
 }
 
